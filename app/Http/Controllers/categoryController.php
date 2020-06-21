@@ -122,4 +122,16 @@ class categoryController extends Controller
 
         return redirect('/category');
     }
+
+    public function test($id)
+    {
+        //
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        Session::flash('success','Your data deleted.');
+
+        return redirect('/category');
+    }
 }
