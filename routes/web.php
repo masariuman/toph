@@ -37,3 +37,5 @@ Route::get('/post/{id}','PostController@show');
 
 
 Route::get('/post/{id}','PostController@show');
+
+Route::get('/post/{id}','PostController@show');
