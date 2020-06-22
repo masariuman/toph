@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -40,17 +41,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
-            'category' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'category_id' => 'required',
+        //     'title' => 'required',
+        //     'content' => 'required',
+        // ]);
 
         Post::create([
-            'name' => $request->category,
+            'title' => $request->title,
+            'content' => $request->content,
         ]);
 
         Session::flash('success','Your data Stored on Database Successfully');
 
-        return redirect('/category');
+        return redirect('/post');
     }
 
     /**
@@ -62,9 +66,9 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
-        $data['category'] = Category::findOrFail($id);
+        $data['post'] = Post::findOrFail($id);
 
-        return view('category.show',$data);
+        return view('post.show',$data);
     }
 
     /**
@@ -73,12 +77,13 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
         //
-        $data['category'] = Category::findOrFail($id);
+        $data['post'] = Post::findOrFail($id);
+        // dd($data['post']);
 
-        return view('category.edit',$data);
+        return view('post.edit',$data);
     }
 
     /**
@@ -88,18 +93,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
         //
-        $category = Category::findOrFail($id);
+        $post = Post::findOrFail($id);
 
-        $category->update([
-            'name' => $request->category,
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content,
         ]);
 
         Session::flash('success','Your data successfully edited.');
 
-        return redirect('/category');
+        return redirect('/post');
     }
 
     /**
@@ -108,15 +114,15 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
         //
-        $category = Category::findOrFail($id);
+        $post = Post::findOrFail($id);
 
-        $category->delete();
+        $post->delete();
 
         Session::flash('success','Your data deleted.');
 
-        return redirect('/category');
+        return redirect('/post');
     }
 }

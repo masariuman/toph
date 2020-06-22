@@ -10,7 +10,7 @@
 @endpush
 
 @section('title')
-    Edit Category
+    Edit Post
 @endsection
 
 @section('content')
@@ -22,8 +22,8 @@
                         <i class="pe-7s-menu icon-gradient bg-mean-fruit">
                         </i>
                     </div>
-                    <div>Category
-                        <div class="page-title-subheading">Edit Category.
+                    <div>Post
+                        <div class="page-title-subheading">Edit Post.
                         </div>
                     </div>
                 </div>
@@ -41,14 +41,18 @@
                     <div class="col-md-12">
                         <div class="main-card mb-3 card">
                             <div class="card-body">
-                                <form action="/category/{{$category->id}}" method="post">
+                                <form action="/post/{{$post->id}}" method="post">
                                     @method('patch')
                                     @csrf
                                     <div class="position-relative form-group">
-                                        <label for="exampleAddress" class="">Category</label>
-                                        <input name="category" id="exampleAddress" placeholder="Please Type a Category...." type="text" class="form-control" value="{{$category->name}}">
+                                        <label for="exampleAddress" class="">Title :</label>
+                                        <input name="title" id="exampleAddress" placeholder="Please Type a Title...." type="text" class="form-control" value="{{$post->title}}">
                                     </div>
-                                    <button type="submit" class="mb-2 mr-2 btn-transition btn btn-outline-warning custombutton">Edit Category</button>
+                                    <div class="position-relative form-group">
+                                        <label for="exampleText" class="">Content :</label>
+                                        <textarea name="content" id="exampleText" class="form-control">{{$post->content}}</textarea>
+                                    </div>
+                                    <button type="submit" class="mb-2 mr-2 btn-transition btn btn-outline-warning custombutton">Edit Post</button>
                                 </form>
                             </div>
                         </div>

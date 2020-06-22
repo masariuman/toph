@@ -50,7 +50,7 @@
                                     <tr>
                                         <th class="text-center">No</th>
                                         <th class="text-center">Title</th>
-                                        <th class="text-center">Category</th>
+                                        <th class="text-center">Content</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                     </thead>
@@ -59,11 +59,11 @@
                                             <tr>
                                                 <th scope="row" class="text-center">{{$number + 1}}</th>
                                                 <td class="text-center">{{$value->title}}</td>
-                                                <td class="text-center">{{$value->name}}</td>
+                                                <td class="text-center">{{$value->content}}</td>
                                                 <td class="text-center">
                                                     <a href="/post/{{$value->id}}"><button class="mb-2 mr-2 btn-transition btn btn-outline-alternate">Show</button></a>
                                                     <a href="/post/{{$value->id}}/edit"><button class="mb-2 mr-2 btn-transition btn btn-outline-warning">EDIT</button></a>
-                                                    <button class="mb-2 mr-2 btn-transition btn btn-outline-danger" data-toggle="modal" data-target="#post{{$value->id}}">Delete</button>
+                                                    <button class="mb-2 mr-2 btn-transition btn btn-outline-danger" data-toggle="modal" data-target="#post_{{$value->id}}">Delete</button>
                                                 </td>
                                             </tr>
                                         @endforeach
