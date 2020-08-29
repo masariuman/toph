@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Sat Aug 29 2020 06:06:04 GMT+0700 (Western Indonesia Time)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-29-7-2020-4-5-56.txt
+
+
+Deleted files:
+
+
+Renamed files:
